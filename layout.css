@@ -1,0 +1,223 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ffffff, #cfe8ff);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    overflow: hidden;
+}
+
+.carousel {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff;
+    border: none;
+    color: #1565C0;
+    font-size: 3rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 4px 10px rgba(21, 101, 192, 0.2);
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-arrow::before {
+    content: attr(data-arrow);
+    display: block;
+    transform: translateY(0px);
+    font-size: 3rem;
+    line-height: 1;
+    color: #1565C0;
+    pointer-events: none;
+}
+
+.nav-arrow.left {
+    left: 20px;
+}
+
+.nav-arrow.right {
+    right: 20px;
+}
+
+.nav-arrow:disabled {
+    background: #e0e0e0;
+    color: #aaa;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.nav-arrow:hover:not(:disabled) {
+    background: #1565C0;
+    color: #fff;
+}
+
+#timerContainer {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.timer-segment {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 0px 0 5px;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0px;
+}
+
+.segment-title {
+    font-size: 2.3rem;
+    font-weight: 600;
+    margin: 10px 0 0 0;
+    color: #0D47A1;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.segment-subtitle {
+    font-size: 1.4rem;
+    color: #1565C0;
+    margin: 0 0 5px 0;
+    text-align: center;
+}
+
+.time {
+    font-size: 25rem;
+    font-weight: 400;
+    text-align: center;
+    margin-top: -30px;
+    user-select: none;
+    color: #002a80;
+    text-shadow:
+        0 0 10px rgba(0, 60, 120, 0.6),
+        0 0 20px rgba(0, 90, 200, 0.3),
+        2px 2px 6px rgba(0, 60, 120, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.timer-footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
+    padding-bottom: 30px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 25px;
+    background: #E1F5FE;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.progress {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #0D47A1, #002357);
+    transition: width 0.5s ease;
+    border-radius: 12px 0 0 15px;
+    box-shadow: 0 0 8px rgba(129, 212, 250, 0.6);
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.controls button {
+    padding: 16px 35px;
+    font-size: 1.4rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    background: linear-gradient(90deg, #0D47A1, #002357);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 6px 15px rgba(41, 182, 246, 0.4);
+    transition: background 0.3s, transform 0.2s;
+    user-select: none;
+}
+
+.controls button:hover:not(:disabled) {
+    background: linear-gradient(90deg, #0D47A1, #002357);
+    transform: scale(1.05);
+}
+
+.controls button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+    color: #999;
+}
+
+@media (max-width: 768px) {
+    .carousel {
+        flex-direction: column;
+        height: 90vh;
+    }
+
+    .nav-arrow {
+        font-size: 2.5rem;
+        width: 50px;
+        height: 50px;
+    }
+
+    #timerContainer {
+        width: 100%;
+        height: 100%;
+    }
+
+    .time {
+        font-size: 7rem;
+    }
+
+    .controls button {
+        font-size: 1.2rem;
+        padding: 12px 25px;
+    }
+
+    .segment-title {
+        font-size: 2rem;
+    }
+
+    .segment-subtitle {
+        font-size: 1.1rem;
+    }
+}
